@@ -1,0 +1,35 @@
+{
+  "extends": "@parcel/config-default",
+  "reporters": [
+    "...",
+    "./plugins/parcel-reporter-sourcemap-mover",
+    "./plugins/parcel-reporter-licenses"
+  ],
+  "transformers": {
+    "*.{js,mjs,jsx,cjs,ts,tsx}": [
+      "./plugins/parcel-remove-console-log",
+      "..."
+    ],
+    "*.md": [
+      "./plugins/parcel-transformer-markdown"
+    ],
+    "*.{svg,png}": [
+      "@parcel/transformer-raw"
+    ]
+  },
+  "resolvers": [
+    "./plugins/parcel-resolver-markdown-i18n",
+    "./plugins/parcel-virtual-files.js",
+    "..."
+  ],
+  "optimizers": {
+    "*.{jpg,jpeg,png,gif}": [
+      "./plugins/parcel-optimizer-imagemin",
+      "..."
+    ],
+    "*.svg": [
+      "@parcel/optimizer-svgo"
+    ]
+  }
+}
+ 

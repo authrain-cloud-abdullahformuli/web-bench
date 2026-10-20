@@ -1,0 +1,50 @@
+/**
+ * Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **/
+
+.add-to-wishlist, .remove-from-wishlist {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 20px 0;
+  display: block;
+}
+
+.add-to-wishlist {
+  background-color: #ff9800;
+  color: white;
+}
+
+.add-to-wishlist:hover {
+  background-color: #e68a00;
+}
+
+.remove-from-wishlist {
+  background-color: #f44336;
+  color: white;
+}
+
+.remove-from-wishlist:hover {
+  background-color: #d32f2f;
+}
+
+.add-to-wishlist:disabled, .remove-from-wishlist:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

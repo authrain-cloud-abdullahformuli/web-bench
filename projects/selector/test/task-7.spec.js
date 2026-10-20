@@ -1,0 +1,53 @@
+// Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+const { test, expect } = require('@playwright/test')
+const { getCssRawText } = require('./util')
+
+let css = ''
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('/index.html')
+  css = await getCssRawText(page)
+})
+
+test('#form attribute selector | equal & not equal', async ({ page }) => {
+  await expect(css).toMatch(/#form\s+:not\(input\[name\]\)/i)
+  await expect(css).toMatch(/#form\s+input\[name=['"]form-1['"]\]/i)
+})
+
+test('#form attribute selectors | contains', async ({ page }) => {
+  await expect(css).toMatch(/#form\s+input\[name\^=['"]form['"]\]/i)
+  await expect(css).toMatch(/#form\s+input\[name\$=['"]end['"]\]/i)
+  await expect(css).toMatch(/#form\s+input\[name\*=['"]unique['"]\]/i)
+})
+
+test('#form bg colors', async ({ page }) => {
+  const inputs = page.locator('#form > input')
+  try {
+    await expect(inputs.nth(0)).toHaveCSS('background-color', 'rgb(255, 255, 255)')
+    await expect(inputs.nth(1)).toHaveCSS('background-color', 'rgb(255, 0, 0)')
+    await expect(inputs.nth(2)).toHaveCSS('background-color', 'rgb(255, 255, 255)')
+    await expect(inputs.nth(3)).toHaveCSS('background-color', 'rgb(255, 255, 255)')
+    await expect(inputs.nth(4)).toHaveCSS('background-color', 'rgb(0, 0, 255)')
+    await expect(inputs.nth(5)).toHaveCSS('background-color', 'rgb(255, 0, 0)')
+    await expect(inputs.nth(6)).toHaveCSS('background-color', 'rgb(255, 255, 255)')
+    await expect(inputs.nth(7)).toHaveCSS('background-color', 'rgb(255, 255, 0)')
+  } catch (error) {
+    const items = await inputs.all()
+    for (const item of items) {
+      await expect(item).toHaveCSS('background-color', 'rgb(255, 192, 203)')
+    }
+  }
+})

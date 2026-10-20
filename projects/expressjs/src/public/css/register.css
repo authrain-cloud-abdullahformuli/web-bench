@@ -1,0 +1,75 @@
+/**
+ * Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **/
+
+.register-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.username,
+.password,
+.confirm-password,
+.referral-code-input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.register-button {
+  width: 100%;
+  padding: 1rem;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.register-button:hover {
+  background: #1976D2;
+}
+
+.error-message {
+  color: #f44336;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.login-link {
+  display: block;
+  text-align: center;
+  color: #666;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  color: #2196F3;
+}

@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use Web-Bench in your research or evaluation, please cite it as below."
+authors:
+  - name: "Abdullah Formuli"
+    family-names: Formuli
+    given-names: Abdullah
+    email: authrainmedia@gmail.com
+    website: https://github.com/authrain-cloud-abdullahformuli
+title: "Web-Bench: A Comprehensive Benchmark Evaluating LLMs in Real-World Web Development"
+version: 1.0.0
+date-released: 2026-10-19
+url: "https://github.com/authrain-cloud-abdullahformuli/web-bench"
+repository-code: "https://github.com/authrain-cloud-abdullahformuli/web-bench"
+license: Apache-2.0
+keywords:
+  - benchmark
+  - llm-evaluation
+  - web-development
+  - ai-agents
+  - code-generation

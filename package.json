@@ -1,0 +1,27 @@
+{
+  "name": "web-bench",
+  "version": "1.0.0",
+  "description": "A comprehensive benchmark evaluating LLMs in real-world web development across 50 projects and 1,000 tasks",
+  "author": "Abdullah Formuli <authrainmedia@gmail.com> (https://github.com/authrain-cloud-abdullahformuli)",
+  "homepage": "https://github.com/authrain-cloud-abdullahformuli/web-bench#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/authrain-cloud-abdullahformuli/web-bench.git"
+  },
+  "bugs": {
+    "url": "https://github.com/authrain-cloud-abdullahformuli/web-bench/issues"
+  },
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "test": "node test.mjs"
+  },
+  "keywords": [
+    "benchmark",
+    "llm-evaluation",
+    "web-development",
+    "code-generation",
+    "ai-agents",
+    "pass-at-1"
+  ]
+}

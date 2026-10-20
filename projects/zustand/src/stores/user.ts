@@ -1,0 +1,53 @@
+// Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+import { create } from 'zustand'
+
+interface UserState {
+  username: string | null
+  isLoggedIn: boolean
+  login: (username: string, password: string) => Promise<boolean>
+  logout: () => void
+}
+
+const useUserStore = create<UserState>((set) => ({
+  username: null,
+  isLoggedIn: false,
+  login: async (username, password) => {
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      })
+      const data = await response.json()
+      
+      if (data.success) {
+        set({ username, isLoggedIn: true })
+        return true
+      }
+      return false
+    } catch (error) {
+      console.error('Login error:', error)
+      return false
+    }
+  },
+  logout: () => {
+    set({ username: null, isLoggedIn: false })
+  }
+}))
+
+export default useUserStore

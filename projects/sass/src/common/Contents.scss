@@ -1,0 +1,64 @@
+// Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+@use 'config';
+@use 'sass:map';
+
+.contents {
+  position: fixed;
+  right: config.$gap;
+  top: config.$gap;
+  bottom: config.$gap;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden auto;
+  gap: 0.5rem;
+  background-color: map.get(config.$color, white);
+  border-radius: 0.8rem;
+  padding: 1.5rem;
+
+  &-item {
+    display: flex;
+    padding: 0rem 1.5rem;
+    min-height: 4rem;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: grab;
+    background-color: map.get(config.$color, white);
+    @include config.border-base(0.6rem);
+
+    &:hover {
+      border-color: map.get(config.$color, primary);
+      background-color: map.get(config.$color, hover);
+      transform: translateX(-0.4rem);
+    }
+
+    &.dragging {
+      opacity: 0.3;
+      cursor: grabbing;
+      background-color: map.get(config.$color, hover);
+      transform: scale(1.02);
+    }
+
+    &.dragover-above {
+      border-top: 0.4rem solid map.get(config.$color, primary);
+    }
+
+    &.dragover {
+      border-bottom: 0.4rem solid map.get(config.$color, primary);
+    }
+  }
+}

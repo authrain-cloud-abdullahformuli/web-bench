@@ -1,0 +1,19 @@
+{
+  "name": "@web-bench/tailwind",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "",
+    "test": "npx @web-bench/test-util",
+    "src:test": "npm test -- -a"
+  },
+  "author": "luics",
+  "eval": {
+    "stable": true
+  },
+  "devDependencies": {
+    "@playwright/test": "1.57.0",
+    "@types/node": "^22.7.9",
+    "serve": "^14.2.4",
+    "@web-bench/test-util": "workspace:*"
+  }
+}

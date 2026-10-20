@@ -1,0 +1,32 @@
+name: Test Project Src
+
+on:
+  pull_request:
+    branches: ['main']
+  merge_group:
+    branches: ['main']
+
+jobs:
+  test-project-src:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Rush Install
+        run: node common/scripts/install-run-rush.js install
+
+      - name: Rush build
+        run: node common/scripts/install-run-rush.js build -t tag:evaluator
+
+      - name: Install Playwright Browsers
+        run: pushd projects/angular && npx playwright install --with-deps --only-shell chromium && popd
+
+      - name: Run tests
+        run: node common/scripts/install-run-rush.js src:test --verbose

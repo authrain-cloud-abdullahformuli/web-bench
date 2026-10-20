@@ -1,0 +1,89 @@
+/**
+ * Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **/
+
+.header-user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.header-user-container {
+  position: relative;
+}
+
+.header-username {
+  cursor: pointer;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.header-username:hover {
+  background-color: #eaeaea;
+}
+
+.header-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  min-width: 150px;
+  z-index: 1000;
+  margin-top: 4px;
+}
+
+.header-dropdown button {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.header-dropdown button:hover {
+  background-color: #f5f5f5;
+}
+
+.header-go-user-profile {
+  color: #333;
+  border-bottom: 1px solid #eee !important;
+}
+
+.header-logout-btn {
+  color: #e53935;
+}
+
+.header-go-login {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.header-go-login:hover {
+  background-color: #388E3C;
+}

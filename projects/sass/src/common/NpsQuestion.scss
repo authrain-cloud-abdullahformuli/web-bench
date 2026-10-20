@@ -1,0 +1,55 @@
+// Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+@use 'config';
+@use 'sass:map';
+
+.nps {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  padding: config.$gap 0;
+
+  .option {
+    @include config.border-base(0.4rem);
+    flex: 1;
+    @include config.center-flex();
+    height: 4rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+
+    input[type='radio'] {
+      appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+.pre .nps {
+  .option {
+    cursor: pointer;
+
+    &:hover {
+      background-color: map.get(config.$color, background);
+      border-color: map.get(config.$color, primary);
+    }
+
+    &.active {
+      background-color: map.get(config.$color, primary);
+      border-color: map.get(config.$color, primary);
+      color: map.get(config.$color, white);
+      transform: scale(1.05);
+    }
+  }
+}

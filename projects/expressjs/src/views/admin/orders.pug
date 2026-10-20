@@ -1,0 +1,59 @@
+//- Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+//- 
+//- Licensed under the Apache License, Version 2.0 (the "License");
+//- you may not use this file except in compliance with the License.
+//- You may obtain a copy of the License at
+//- 
+//-     http://www.apache.org/licenses/LICENSE-2.0
+//- 
+//- Unless required by applicable law or agreed to in writing, software
+//- distributed under the License is distributed on an "AS IS" BASIS,
+//- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//- See the License for the specific language governing permissions and
+//- limitations under the License.
+
+extends ../layout
+
+block content
+  link(rel="stylesheet", href="/css/admin.css")
+
+  h1 Order Management Portal
+  table.admin-table
+    thead
+      tr
+        th ID
+        th User
+        th Status 
+        th Total
+        th Buttons
+    tbody
+      each order in orders
+        tr.admin-order(id=`admin_order_${order.id}`)
+          td.order-id #{order.id}
+          td.order-user #{order.username}
+          td.order-status #{order.status}
+          td.order-total $#{order.total_price}
+          td
+            if order.status === 'Refund Reviewing'
+              button.pass-refund-review-button(data-order-id=order.id) Approve Refund
+
+  script.
+    document.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('pass-refund-review-button')) {
+        const orderId = e.target.dataset.orderId
+        const res = await fetch(`/api/orders/${orderId}/refund/approve`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            orderId
+          })
+        })
+
+        const data = await res.json()
+        if (data.success) {
+          window.location.reload()
+        }
+      }
+    })
